@@ -58,6 +58,11 @@ const config = {
         md: 'calc(var(--radius) - 2px)',
         sm: 'calc(var(--radius) - 4px)',
       },
+      /**
+       * 关键帧动画定义了在特定时间点上元素的样式。
+       * fade-in 从透明度 0 到 1 的淡入动画。
+       * marquee 从上到下的滚动动画。
+       */
       keyframes: {
         'fade-in': {
           from: {
@@ -72,15 +77,15 @@ const config = {
             transform: 'translateY(-50%)',
           },
         },
-        flashing: {
-          '0%, 100%': { opacity: '0.2' },
-          '20%': { opacity: '1' },
-        },
       },
+      /**
+       * 动画定义了元素如何应用关键帧动画
+       * marquee 从上到下的滚动动画。
+       * fade-in 从透明度 0 到 1 的淡入动画。
+       */
       animation: {
         marquee: 'marquee var(--marquee-duration) linear infinite',
         'fade-in': 'fade-in 0.5s linear forwards',
-        flashing: 'flashing 1.4s infinite linear',
       },
     },
   },
