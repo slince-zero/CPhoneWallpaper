@@ -34,7 +34,7 @@ const Page = () => {
     })
   }
   const onDropAccepted = (files: File[]) => {
-    startUpload(files, { configId: '123' })
+    startUpload(files, { configId: undefined })
     setIsDragOver(false)
   }
 
