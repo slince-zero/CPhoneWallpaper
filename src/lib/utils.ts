@@ -23,3 +23,19 @@ export function cn(...inputs: ClassValue[]) {
  * twMerge 处理后：如果有任何冲突的 Tailwind CSS 类名（比如 bg-red-500 和 bg-blue-500 同时存在），它会根据 Tailwind CSS 的规则合并最终的类名。
  * 最终 className 将会是一个经过优化和合并的 CSS 类名字符串。
  */
+
+
+/**
+ * 
+ * @param price 1234.56
+ * @returns $1,234.56
+ * @description 美元格式化
+ */
+export const formatPrice = (price: number) => {
+  const formatter = new Intl.NumberFormat('en-US', {
+    style: 'currency',
+    currency: 'USD',
+  })
+
+  return formatter.format(price)
+}
