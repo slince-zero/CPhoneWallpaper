@@ -9,9 +9,8 @@ interface PageProps {
 }
 const Page = async ({ searchParams }: PageProps) => {
   const { id } = searchParams
-  console.log(id, '33333')
 
-  if (!id || id !== 'string') {
+  if (!id || typeof id !== 'string') {
     return notFound()
   }
   const configuration = await db.configuration.findUnique({
