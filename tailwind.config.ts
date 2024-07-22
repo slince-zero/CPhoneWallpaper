@@ -77,6 +77,10 @@ const config = {
             transform: 'translateY(-50%)',
           },
         },
+        flashing: {
+          '0%, 100%': { opacity: '0.2' },
+          '20%': { opacity: '1' },
+        },
       },
       /**
        * 动画定义了元素如何应用关键帧动画
@@ -86,6 +90,7 @@ const config = {
       animation: {
         marquee: 'marquee var(--marquee-duration) linear infinite',
         'fade-in': 'fade-in 0.5s linear forwards',
+        flashing: 'flashing 1s infinite linear',
       },
     },
   },
