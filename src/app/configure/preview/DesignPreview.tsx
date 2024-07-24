@@ -13,6 +13,8 @@ import { useEffect, useState } from 'react'
 import Confetti from 'react-dom-confetti'
 import LoginModal from '@/components/LoginModal'
 import { useKindeBrowserClient } from '@kinde-oss/kinde-auth-nextjs'
+import { createCheckoutSession } from './action'
+import { toast } from '@/components/ui/use-toast'
 const DesignPreview = ({ configuration }: { configuration: Configuration }) => {
   const router = useRouter()
   const { id } = configuration
@@ -36,9 +38,26 @@ const DesignPreview = ({ configuration }: { configuration: Configuration }) => {
     return () => clearTimeout(timer)
   }, [])
 
+  const { mutate: createPaymentSession } = useMutation({
+    mutationKey: ['get-checkout-session'],
+    mutationFn: createCheckoutSession,
+    onSuccess: ({ url }) => {
+      if (url) router.push(url)
+      else throw new Error('Unable to retrieve payment url')
+    },
+    onError: () => {
+      toast({
+        title: 'Something went wrong',
+        description: 'Unable to create payment session',
+        variant: 'destructive',
+      })
+    },
+  })
+
   const handleCheckout = () => {
     if (user) {
       // 如果有的话，直接跳转到支付页面
+      createPaymentSession({ configId: id })
     } else {
       // 如果没有的话，打开登录框
       localStorage.setItem('configurationId', id)

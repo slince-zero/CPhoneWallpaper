@@ -52,4 +52,7 @@ export const createCheckoutSession = async ({
       },
     })
   }
+  // 暂时没有介入支付功能，这里直接跳转
+
+  return { url: `${process.env.NEXT_PUBLIC_SERVER_URL}/thank-you?orderId=${order.id}` }
 }
