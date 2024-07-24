@@ -1,6 +1,6 @@
 'use client'
 
-import { BASE_PRICE, PRODUCT_PRICES } from '@/components/config/product'
+import { BASE_PRICE, PRODUCT_PRICES } from '@/config/product'
 import Phone from '@/components/Phone'
 import { Button } from '@/components/ui/button'
 import { cn, formatPrice } from '@/lib/utils'
