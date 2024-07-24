@@ -88,7 +88,7 @@ model ShippingAddress {
   id          String  @id @default(cuid())
   name        String
   street      String
-  cicty       String
+  city       String
   postalCode  String
   country     String
   state       String?
@@ -100,7 +100,7 @@ model BillingAddress {
   id          String  @id @default(cuid())
   name        String
   street      String
-  cicty       String
+  city       String
   postalCode  String
   country     String
   state       String?
