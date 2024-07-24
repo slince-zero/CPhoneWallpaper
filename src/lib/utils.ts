@@ -5,6 +5,7 @@
  */
 
 import { type ClassValue, clsx } from 'clsx'
+import { Metadata } from 'next'
 import { twMerge } from 'tailwind-merge'
 
 /**
@@ -24,9 +25,8 @@ export function cn(...inputs: ClassValue[]) {
  * 最终 className 将会是一个经过优化和合并的 CSS 类名字符串。
  */
 
-
 /**
- * 
+ *
  * @param price 1234.56
  * @returns $1,234.56
  * @description 美元格式化
@@ -38,4 +38,39 @@ export const formatPrice = (price: number) => {
   })
 
   return formatter.format(price)
+}
+
+
+/**
+ * @description 用于搜索引擎优化（SEO）和社交媒体分享的相关信息 生成 metadata
+ */
+export function constructMetadata({
+  title = 'CaseCobra - custom high-quality phone cases',
+  description = 'Create custom high-quality phone cases in seconds',
+  image = '/thumbnail.png',
+  icons = '/favicon.ico',
+}: {
+  title?: string
+  description?: string
+  image?: string
+  icons?: string
+} = {}): Metadata {
+  return {
+    title,
+    description,
+    openGraph: {
+      title,
+      description,
+      images: [{ url: image }],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title,
+      description,
+      images: [image],
+      creator: '@joshtriedcoding',
+    },
+    icons,
+    metadataBase: new URL('https://casecobra.vercel.app/'),
+  }
 }
