@@ -23,7 +23,7 @@ import {
 } from '@/components/ui/dropdown-menu'
 import { Button } from '@/components/ui/button'
 import { ArrowRight, Check, ChevronsUpDown } from 'lucide-react'
-import { BASE_PRICE } from '@/components/config/product'
+import { BASE_PRICE } from '@/config/product'
 import { useUploadThing } from '@/lib/uploadthing'
 import { toast } from '@/components/ui/use-toast'
 import { useMutation } from '@tanstack/react-query'
